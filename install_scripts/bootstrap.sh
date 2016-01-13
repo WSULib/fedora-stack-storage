@@ -21,9 +21,6 @@ apt-get -y update && apt-get -y upgrade
 # SSH
 apt-get -y install openssh-server
 
-# Build tools
-apt-get -y install build-essential
-
 # Git vim
 apt-get -y install git vim
 
@@ -38,6 +35,4 @@ sudo apt-get -y install ffmpeg
 # visualization tools
 apt-get -y install htop tree ncdu
 
-# Create Users
-useradd -m -s /bin/bash loris
-echo loris:password | chpasswd
+

@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty64"
 
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = 10240
+    vb.memory = 3072
     vb.cpus = 2
     config.vm.network "private_network", ip: "192.168.42.6"    
   end
@@ -20,10 +20,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   shared_dir = "/vagrant"  
 
   config.vm.provision "shell", path: "./install_scripts/bootstrap.sh", args: shared_dir  
-  config.vm.provision "shell", path: "./install_scripts/lamp.sh", args: shared_dir
+  config.vm.provision "shell", path: "./install_scripts/databases.sh", args: shared_dir
   config.vm.provision "shell", path: "./install_scripts/java.sh", args: shared_dir
   config.vm.provision "shell", path: "./install_scripts/tomcat.sh", args: shared_dir
-  config.vm.provision "shell", path: "./install_scripts/fedora.sh", args: shared_dir  
+  config.vm.provision "shell", path: "./install_scripts/fedora.sh", args: shared_dir
+  config.vm.provision "shell", path: "./install_scripts/filesystem_storage.sh", args: shared_dir  
   config.vm.provision "shell", path: "./install_scripts/cleanup.sh", args: shared_dir
 
 end

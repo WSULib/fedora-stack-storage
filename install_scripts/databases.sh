@@ -1,5 +1,5 @@
 #!/bin/sh
-echo "---- Installing Supervisor ------------------------------------------------"
+echo "---- Installing MySQL and DBs ------------------------------------------------"
 
 #### GET ENVARS #################################################
 SHARED_DIR=$1
@@ -15,7 +15,7 @@ else
 fi
 #################################################################
 
-# apt-get install 
-apt-get -y install supervisor
-service supervisor restart
 
+echo "mysql-server mysql-server/root_password password $SQL_PASSWORD" | debconf-set-selections
+echo "mysql-server mysql-server/root_password_again password $SQL_PASSWORD" | debconf-set-selections
+apt-get -y install mysql-server-5.5
